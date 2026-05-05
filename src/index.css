@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F2EBD9;
+  --color-cream-dark: #E8DFC8;
+  --color-ink: #0D0D0D;
+  --color-ink-soft: #1A1A1A;
+  --color-terra: #C4623A;
+  --color-terra-light: #D4825A;
+  --color-gold: #B8965A;
+  --color-gold-light: #CCA96E;
+  --color-sage: #6B7C6E;
+  --color-mist: #EAE3D3;
+
+  --font-display: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --letter-spacing-widest2: 0.25em;
+  --letter-spacing-widest3: 0.35em;
+
+  --animate-marquee: marqueeScroll 28s linear infinite;
+  --animate-rotate-slow: rotateSlow 60s linear infinite;
+  --animate-rotate-slow-reverse: rotateSlow 80s linear infinite reverse;
+  --animate-scroll-pulse: scrollPulse 2s ease-in-out infinite;
+  --animate-pulse-dot: pulse 2s ease-in-out infinite;
+
+  @keyframes marqueeScroll {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes rotateSlow {
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+}
+
+@layer base {
+  :root {
+    --ink-mid:     #2A2A2A;
+    --grain-opacity: 0.035;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-ink font-body font-light leading-relaxed overflow-x-hidden;
+    cursor: none;
+  }
+
+  /* Focus states */
+  :focus-visible {
+    outline: 2px solid var(--color-terra);
+    outline-offset: 3px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--color-cream); }
+  ::-webkit-scrollbar-thumb { background: var(--color-terra); }
+}
+
+@layer components {
+  .grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9990;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: var(--grain-opacity);
+  }
+
+  .cursor-dot {
+    width: 8px; height: 8px;
+    background: var(--color-terra);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, background 0.2s;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid var(--color-ink);
+    border-radius: 50%;
+    position: fixed; top: 0; left: 0;
+    pointer-events: none; z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, border-color 0.2s ease;
+  }
+  body.cursor-hover .cursor-ring {
+    width: 60px; height: 60px;
+    border-color: var(--color-terra);
+  }
+  body.cursor-hover .cursor-dot {
+    transform: translate(-50%, -50%) scale(0.4);
+  }
+
+  .display-xl {
+    @apply font-display font-light leading-[0.92] tracking-tighter;
+    font-size: clamp(4rem, 11vw, 10rem);
+  }
+  .display-lg {
+    @apply font-display font-light leading-none tracking-tight;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+  }
+  .display-md {
+    @apply font-display font-light leading-[1.1];
+    font-size: clamp(1.75rem, 3.5vw, 3rem);
+  }
+  .label-caps {
+    @apply font-body text-[0.65rem] font-medium tracking-[0.28em] uppercase text-sage;
+  }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer utilities {
+  .writing-mode-vertical-rl {
+    writing-mode: vertical-rl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .fade-up { opacity: 1 !important; transform: none !important; }
+}
