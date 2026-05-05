@@ -93,7 +93,7 @@ function Nav() {
         </button>
 
         {/* Desktop Links */}
-        <ul style={{ display: "flex", gap: "2.5rem", listStyle: "none" }} className="hidden md:flex">
+        <ul style={{ gap: "2.5rem", listStyle: "none" }} className="nav-desktop-links">
           {navLinks.map((id) => (
             <li key={id}>
               <NavLink onClick={() => scrollTo(id)}>{navLabels[id]}</NavLink>
@@ -104,10 +104,10 @@ function Nav() {
         {/* Hamburger */}
         <button
           onClick={toggleMenu}
-          style={{ background: "none", border: "none", cursor: "none", display: "flex", flexDirection: "column", gap: 5, padding: 4 }}
+          style={{ background: "none", border: "none", cursor: "none", flexDirection: "column", gap: 5, padding: 4 }}
           aria-label="Toggle mobile menu"
           aria-expanded={menuOpen}
-          className="flex md:hidden"
+          className="nav-hamburger"
         >
           {[1, 2, 3].map((n) => (
             <span
