@@ -532,10 +532,6 @@ function HomePage() {
   const shouldShowLoader = !appLoaderShown;
   const [loaded, setLoaded] = useState(!shouldShowLoader);
 
-  useEffect(() => {
-    if (!shouldShowLoader) setLoaded(true);
-  }, [shouldShowLoader]);
-
   return (
     <>
       {shouldShowLoader && (

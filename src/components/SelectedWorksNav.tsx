@@ -51,8 +51,8 @@ export default function SelectedWorksNav({ accentColor, current, total = "03" }:
                     textDecoration: "none",
                     transition: "color 0.2s",
                 }}
-                onMouseEnter={(event) => (event.currentTarget.style.color = accentColor)}
-                onMouseLeave={(event) => (event.currentTarget.style.color = navText)}
+                onMouseEnter={(event: React.MouseEvent<HTMLElement>) => (event.currentTarget.style.color = accentColor)}
+                onMouseLeave={(event: React.MouseEvent<HTMLElement>) => (event.currentTarget.style.color = navText)}
             >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true">
                     <path d="M11 7H3M6 4L3 7l3 3" />
