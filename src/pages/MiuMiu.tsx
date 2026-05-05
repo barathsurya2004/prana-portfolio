@@ -55,7 +55,7 @@ function LocalStyles() {
 
       @media (max-width: 900px) { .miu .two-col { grid-template-columns: 1fr !important; gap: 3rem !important; } }
       @media (max-width: 700px) { .miu .three-col { grid-template-columns: 1fr 1fr !important; } .miu .card-grid-inner { grid-template-columns: 1fr !important; } }
-      @media (max-width: 700px) { .miu .stat-cols-4 { grid-template-columns: 1fr 1fr !important; } }
+      @media (max-width: 700px) { .miu .stat-cols-4 { grid-template-columns: 1fr !important; } }
       @media (max-width: 768px) { .miu .hero-footer-grid { grid-template-columns: 1fr 1fr !important; } .miu .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } }
     `}</style>
   );

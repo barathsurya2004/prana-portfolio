@@ -55,7 +55,7 @@ function LocalStyles() {
       .lp .fiber-line:nth-child(5) { animation-delay: 2.4s; }
 
       @media (max-width: 768px) {
-        .lp section, .lp header { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        .lp section, .lp header, .lp .stats-container { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
         .lp .hero-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
         .lp .comp-row-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
       }
@@ -64,7 +64,10 @@ function LocalStyles() {
         .lp .fu { opacity: 1 !important; transform: none !important; }
       }
       @media (max-width: 900px) { .lp .two-col  { grid-template-columns: 1fr !important; gap: 3rem !important; } }
-      @media (max-width: 700px) { .lp .three-col { grid-template-columns: 1fr !important; } .lp .stat-cols-4 { grid-template-columns: 1fr 1fr !important; } }
+      @media (max-width: 700px) { 
+        .lp .three-col { grid-template-columns: 1fr !important; } 
+        .lp .stat-cols-4 { grid-template-columns: 1fr !important; } 
+      }
       @media (max-width: 768px) { .lp .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } }
     `}</style>
   );
@@ -322,7 +325,7 @@ function StatRow({ stats, bg = C.cream, cols = 4 }: { stats: [string, string][],
 // ─── STATS BAND ───────────────────────────────────────────────────────────────
 function Stats() {
   return (
-    <div style={{ padding: "4rem 2.5rem", background: C.cream }}>
+    <div className="stats-container" style={{ padding: "4rem 2.5rem", background: C.cream }}>
       <StatRow
         stats={[["1924", "Founded in Quarona, Italy"], ["100+", "Years of Material Innovation"], ["Vicuña", "World's Rarest Luxury Fiber"], ["LVMH", "Acquired 2013"]]}
         cols={4} bg={C.cream}
