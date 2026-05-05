@@ -568,7 +568,7 @@ function Footer() {
       alignItems: "center", borderTop: "1px solid rgba(242,235,217,0.05)",
       fontSize: "0.62rem", letterSpacing: "0.1em", flexWrap: "wrap", gap: "0.5rem",
     }}>
-      <Link to="/" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
+      <Link to="/#work" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
         onMouseEnter={e => e.currentTarget.style.color = C.terra} onMouseLeave={e => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>
         ← Selected Works
       </Link>

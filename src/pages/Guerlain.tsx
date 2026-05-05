@@ -409,7 +409,7 @@ export default function Guerlain() {
       </main>
       <NextProject />
       <footer style={{ background: C.ink, color: "rgba(242,235,217,0.25)", padding: "1.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(242,235,217,0.05)", fontSize: "0.62rem", letterSpacing: "0.1em" }}>
-        <Link to="/" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}>← Selected Works</Link>
+        <Link to="/#work" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}>← Selected Works</Link>
         <span>Case Study 02 of 03</span>
         <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}>Contact</a>
       </footer>

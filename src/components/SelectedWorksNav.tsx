@@ -39,7 +39,7 @@ export default function SelectedWorksNav({ accentColor, current, total = "03" }:
             }}
         >
             <Link
-                to="/"
+                to="/#work"
                 style={{
                     display: "flex",
                     alignItems: "center",
