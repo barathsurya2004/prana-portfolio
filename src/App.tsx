@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import type {
   WorkItem,
   WorkCardProps,
@@ -16,6 +17,9 @@ import {
   navLabels,
   navLinks,
 } from "./types";
+import CursorWrapper from "./components/CursorWrapper";
+import WorkList from "./pages/WorkList";
+import WorkDetail from "./pages/WorkDetail";
 
 // ─── CUSTOM HOOKS ────────────────────────────────────────────────────────────
 function useFadeObserver() {
@@ -34,77 +38,6 @@ function useFadeObserver() {
     document.querySelectorAll(".fade-up-obs").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
-}
-
-// ─── CURSOR ──────────────────────────────────────────────────────────────────
-function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement>(null);
-  const ringRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    const dot = dotRef.current;
-    const ring = ringRef.current;
-    const move = (e: MouseEvent) => {
-      if (dot) {
-        dot.style.left = e.clientX + "px";
-        dot.style.top = e.clientY + "px";
-      }
-      if (ring) {
-        ring.style.left = e.clientX + "px";
-        ring.style.top = e.clientY + "px";
-      }
-    };
-    document.addEventListener("mousemove", move);
-    const hoverEls = document.querySelectorAll("a, button, .hover-target");
-    hoverEls.forEach((el) => {
-      el.addEventListener("mouseenter", () => {
-        if (ring) {
-          ring.style.width = "60px";
-          ring.style.height = "60px";
-          ring.style.borderColor = colors.terra;
-        }
-        if (dot) {
-          dot.style.transform = "translate(-50%,-50%) scale(0.4)";
-        }
-      });
-      el.addEventListener("mouseleave", () => {
-        if (ring) {
-          ring.style.width = "36px";
-          ring.style.height = "36px";
-          ring.style.borderColor = colors.ink;
-        }
-        if (dot) {
-          dot.style.transform = "translate(-50%,-50%) scale(1)";
-        }
-      });
-    });
-    return () => document.removeEventListener("mousemove", move);
-  }, []);
-
-  return (
-    <>
-      <div
-        ref={dotRef}
-        style={{
-          width: 8, height: 8, background: colors.terra, borderRadius: "50%",
-          position: "fixed", top: 0, left: 0, pointerEvents: "none", zIndex: 9999,
-          transform: "translate(-50%,-50%)", transition: "transform 0.1s ease",
-        }}
-        aria-hidden="true"
-      />
-      <div
-        ref={ringRef}
-        style={{
-          width: 36, height: 36, border: `1px solid ${colors.ink}`, borderRadius: "50%",
-          position: "fixed", top: 0, left: 0, pointerEvents: "none", zIndex: 9998,
-          transform: "translate(-50%,-50%)",
-          transition: "width 0.3s ease, height 0.3s ease, border-color 0.2s ease",
-        }}
-        aria-hidden="true"
-      />
-    </>
-  );
 }
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
@@ -495,7 +428,7 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
       </div>
 
       <a
-        href="#"
+        href={`/work/${item.index}`}
         aria-label={`View ${item.title}`}
         style={{
           width: 48, height: 48, borderRadius: "50%",
@@ -524,6 +457,20 @@ function Work() {
         {workItems.map((item, i) => <WorkCard key={item.index} item={item} delay={i * 0.1} />)}
       </div>
     </section>
+  );
+}
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Marquee />
+      <Work />
+      <About />
+      <Capabilities />
+      <Experience />
+      <Contact />
+    </>
   );
 }
 
@@ -952,24 +899,33 @@ const GlobalStyles = () => (
 );
 
 // ─── APP ──────────────────────────────────────────────────────────────────────
-export default function App() {
+function AppContent() {
   useFadeObserver();
+  const location = useLocation();
+  const isWorkRoute = location.pathname.startsWith("/work");
 
   return (
     <>
       <GlobalStyles />
-      <CustomCursor />
-      <Nav />
+      {!isWorkRoute && <Nav />}
       <main>
-        <Hero />
-        <Marquee />
-        <Work />
-        <About />
-        <Capabilities />
-        <Experience />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/work" element={<WorkList />} />
+          <Route path="/work/:id" element={<WorkDetail />} />
+        </Routes>
       </main>
-      <Footer />
+      {!isWorkRoute && <Footer />}
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <CursorWrapper>
+      <BrowserRouter>
+        <AppContent />
+      </BrowserRouter>
+    </CursorWrapper>
   );
 }
