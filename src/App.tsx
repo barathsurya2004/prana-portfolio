@@ -181,14 +181,7 @@ function NavLink({ children, onClick }: NavLinkProps) {
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
-function Hero() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const t1 = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t1);
-  }, []);
-
+function Hero({ visible }: { visible: boolean }) {
   return (
     <section
       id="hero"
@@ -222,14 +215,14 @@ function Hero() {
         className="hero-content"
         style={{
           display: "flex", flexDirection: "column", justifyContent: "flex-end",
-          paddingBottom: "2rem", paddingTop: "7rem",
+          paddingBottom: "4rem", paddingTop: "8rem", position: "relative", zIndex: 1
         }}
       >
         <div
           style={{
-            display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem",
-            opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.8s ease, transform 0.8s ease",
+            display: "flex", alignItems: "center", gap: "1rem", marginBottom: "2rem",
+            opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)",
+            transition: "opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
           }}
         >
           <div style={{ width: 48, height: 1, background: colors.terra }} aria-hidden="true" />
@@ -241,7 +234,7 @@ function Hero() {
         <h1
           id="heroHeading"
           aria-label="Pranahita Reddy"
-          style={{ fontFamily: '"Cormorant Garamond",serif', fontWeight: 300, lineHeight: 0.92, letterSpacing: "-0.02em", fontSize: "clamp(3.5rem,10vw,9rem)" }}
+          style={{ fontFamily: '"Cormorant Garamond",serif', fontWeight: 300, lineHeight: 0.92, letterSpacing: "-0.02em", fontSize: "clamp(4.5rem,7.5vw,7.5rem)" }}
         >
           {["Pranahita", "Reddy"].map((word, i) => (
             <div key={word} style={{ overflow: "hidden" }}>
@@ -258,42 +251,40 @@ function Hero() {
           ))}
         </h1>
 
-        <p
-          style={{
-            fontFamily: '"Cormorant Garamond",serif', fontWeight: 300, fontStyle: "italic",
-            fontSize: "clamp(1rem,1.8vw,1.4rem)", color: colors.inkMid, lineHeight: 1.5,
-            marginTop: "1.5rem", maxWidth: "38ch",
-            opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s",
-          }}
-        >
+        <p style={{
+          fontFamily: '"Cormorant Garamond",serif',
+          fontSize: "clamp(1.1rem, 2vw, 1.5rem)", fontWeight: 300, fontStyle: "italic",
+          color: "rgba(13,13,13,0.7)", marginTop: "2rem", maxWidth: "24ch", lineHeight: 1.5,
+          opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)",
+          transition: `opacity 0.8s ease 0.3s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s`,
+        }}>
           Culturally driven brand storytelling — where Indian craft heritage meets global luxury positioning.
         </p>
       </div>
 
-      {/* Bottom bar */}
       <div
         className="hero-bottom-grid"
         style={{
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr", alignItems: "end",
-          paddingBottom: "1.5rem", gap: "1rem",
-          borderTop: "1px solid rgba(13,13,13,0.12)", paddingTop: "1rem",
-          opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(20px)",
-          transition: "opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s",
+          display: "grid", gridTemplateColumns: "1fr auto 1fr",
+          alignItems: "end", paddingBottom: "2.5rem", gap: "2rem",
+          borderTop: "1px solid rgba(13,13,13,0.12)", paddingTop: "1.5rem",
+          opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)",
+          transition: `opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.4s`,
+          position: "relative", zIndex: 1
         }}
       >
         <div>
-          <div style={{ fontFamily: '"DM Sans",sans-serif', fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, marginBottom: 4 }}>Currently</div>
-          <div style={{ fontSize: "0.82rem", color: colors.inkMid }}>MA Luxury & Brand Management</div>
+          <div style={{ fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, marginBottom: "0.25rem" }}>Currently</div>
+          <div style={{ fontSize: "0.82rem", color: "rgba(13,13,13,0.8)" }}>MA Luxury & Brand Management</div>
           <div style={{ fontSize: "0.78rem", color: colors.sage, fontStyle: "italic" }}>SCAD, Savannah GA · 2027</div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", justifyContent: "center" }} aria-hidden="true">
-          <div style={{ width: 1, height: 40, background: `linear-gradient(to bottom, transparent, ${colors.ink})`, animation: "scrollPulse 2s ease-in-out infinite" }} />
-          <span style={{ fontFamily: '"DM Sans",sans-serif', fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, writingMode: "vertical-rl" }}>Scroll</span>
+          <div style={{ width: 1, height: 48, background: `linear-gradient(to bottom, transparent, ${colors.ink})`, animation: "scrollPulse 2s ease-in-out infinite" }} />
+          <span style={{ fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, writingMode: "vertical-rl" }}>Scroll</span>
         </div>
         <div style={{ textAlign: "right" }}>
-          <div style={{ fontFamily: '"DM Sans",sans-serif', fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, marginBottom: 4 }}>Based in</div>
-          <div style={{ fontSize: "0.82rem", color: colors.inkMid }}>Savannah, Georgia</div>
+          <div style={{ fontSize: "0.65rem", letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, marginBottom: "0.25rem" }}>Based in</div>
+          <div style={{ fontSize: "0.82rem", color: "rgba(13,13,13,0.8)" }}>Savannah, Georgia</div>
           <div style={{ fontSize: "0.78rem", color: colors.sage, fontStyle: "italic" }}>Open to global roles</div>
         </div>
       </div>
@@ -467,10 +458,64 @@ function Work() {
   );
 }
 
+// ─── LOADER ───────────────────────────────────────────────────────────────────
+function MainLoader({ onLoaded }: { onLoaded: () => void }) {
+  const [gone, setGone] = useState(false);
+  const [hiding, setHiding] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const duration = 1600;
+    const intervalTime = 40;
+    const increment = 100 / (duration / intervalTime);
+
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        const next = prev + increment + (Math.random() * 2);
+        if (next >= 100) {
+          clearInterval(timer);
+          setTimeout(() => {
+            setHiding(true);
+            onLoaded();
+            setTimeout(() => setGone(true), 1200);
+          }, 350);
+          return 100;
+        }
+        return next;
+      });
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, [onLoaded]);
+
+  if (gone) return null;
+
+  return (
+    <div style={{
+      position: "fixed", inset: 0, zIndex: 10000,
+      background: colors.cream,
+      display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center",
+      transform: hiding ? "translateY(-100%)" : "none",
+      transition: "transform 1.2s cubic-bezier(0.85, 0, 0.15, 1)",
+      pointerEvents: hiding ? "none" : "all",
+    }} role="status" aria-label="Loading Pranahita Reddy Portfolio">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "2rem", opacity: hiding ? 0 : 1, transition: "opacity 0.6s ease" }}>
+        <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "3.5rem", fontWeight: 300, color: colors.ink, letterSpacing: "0.1em" }}>P·R</div>
+        <div style={{ width: 140, height: 1, background: "rgba(13,13,13,0.1)", position: "relative", overflow: "hidden" }}>
+          <div style={{ position: "absolute", left: 0, top: 0, height: "100%", width: `${progress}%`, background: colors.terra, transition: "width 0.1s ease-out" }} />
+        </div>
+        <div style={{ fontSize: "0.65rem", fontWeight: 500, letterSpacing: "0.28em", textTransform: "uppercase", color: colors.sage, opacity: 0.8 }}>Curating Narratives</div>
+      </div>
+    </div>
+  );
+}
+
 function HomePage() {
+  const [loaded, setLoaded] = useState(false);
   return (
     <>
-      <Hero />
+      <MainLoader onLoaded={() => setLoaded(true)} />
+      <Hero visible={loaded} />
       <Marquee />
       <Work />
       <About />
