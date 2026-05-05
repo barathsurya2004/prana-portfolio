@@ -1,17 +1,27 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { colors } from "../types";
 
 export default function CursorWrapper({ children }: { children: ReactNode }) {
     const dotRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
+    const [touchMode, setTouchMode] = useState(() => {
+        if (typeof window === "undefined") return false;
+        return window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
+    });
 
     useEffect(() => {
-        if (!window.matchMedia("(pointer: fine)").matches) return;
+        if (touchMode || !window.matchMedia("(pointer: fine)").matches) return;
 
         const dot = dotRef.current;
         const ring = ringRef.current;
+        let hasMouseMoved = false;
 
         const move = (e: MouseEvent) => {
+            if (!hasMouseMoved) {
+                hasMouseMoved = true;
+                if (dot) dot.style.opacity = "1";
+                if (ring) ring.style.opacity = "1";
+            }
             if (dot) {
                 dot.style.left = e.clientX + "px";
                 dot.style.top = e.clientY + "px";
@@ -63,16 +73,34 @@ export default function CursorWrapper({ children }: { children: ReactNode }) {
             }
         };
 
+        const disableForTouch = () => {
+            setTouchMode(true);
+        };
+
+        const disableForTouchPointer = (event: PointerEvent) => {
+            if (event.pointerType === "touch") {
+                setTouchMode(true);
+            }
+        };
+
         document.addEventListener("mousemove", move);
         document.addEventListener("mouseover", handleMouseOver);
         document.addEventListener("mouseout", handleMouseOut);
+        document.addEventListener("touchstart", disableForTouch, { passive: true });
+        document.addEventListener("pointerdown", disableForTouchPointer);
 
         return () => {
             document.removeEventListener("mousemove", move);
             document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseout", handleMouseOut);
+            document.removeEventListener("touchstart", disableForTouch);
+            document.removeEventListener("pointerdown", disableForTouchPointer);
         };
-    }, []);
+    }, [touchMode]);
+
+    if (touchMode) {
+        return <>{children}</>;
+    }
 
     return (
         <>
@@ -88,8 +116,9 @@ export default function CursorWrapper({ children }: { children: ReactNode }) {
                     left: 0,
                     pointerEvents: "none",
                     zIndex: 9999,
+                    opacity: 0,
                     transform: "translate(-50%,-50%)",
-                    transition: "transform 0.1s ease",
+                    transition: "transform 0.1s ease, opacity 0.15s ease",
                 }}
                 aria-hidden="true"
             />
@@ -105,8 +134,9 @@ export default function CursorWrapper({ children }: { children: ReactNode }) {
                     left: 0,
                     pointerEvents: "none",
                     zIndex: 9998,
+                    opacity: 0,
                     transform: "translate(-50%,-50%)",
-                    transition: "width 0.3s ease, height 0.3s ease, border-color 0.2s ease",
+                    transition: "width 0.3s ease, height 0.3s ease, border-color 0.2s ease, opacity 0.15s ease",
                 }}
                 aria-hidden="true"
             />

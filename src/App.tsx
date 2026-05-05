@@ -270,6 +270,7 @@ function Hero() {
 
       {/* Bottom bar */}
       <div
+        className="hero-bottom-grid"
         style={{
           display: "grid", gridTemplateColumns: "1fr 1fr 1fr", alignItems: "end",
           paddingBottom: "1.5rem", gap: "1rem",
@@ -376,7 +377,7 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
   return (
     <article
       ref={cardRef}
-      className="fade-up-obs hover-target"
+      className="fade-up-obs hover-target work-card-grid"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
@@ -824,7 +825,7 @@ function Contact() {
 // ─── FOOTER ───────────────────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ background: colors.ink, color: "rgba(242,235,217,0.3)", padding: "1.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(242,235,217,0.06)", fontSize: "0.65rem", letterSpacing: "0.1em", flexWrap: "wrap", gap: "0.5rem" }}>
+    <footer className="main-footer" style={{ background: colors.ink, color: "rgba(242,235,217,0.3)", padding: "1.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(242,235,217,0.06)", fontSize: "0.65rem", letterSpacing: "0.1em", flexWrap: "wrap", gap: "0.5rem" }}>
       <span>© 2026 Pranahita Reddy — All rights reserved</span>
       <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.2)" }}>Brand · Strategy · Design</span>
       <span>Savannah, GA</span>
@@ -883,10 +884,18 @@ const GlobalStyles = () => (
     ::-webkit-scrollbar-track { background: #F2EBD9; }
     ::-webkit-scrollbar-thumb { background: #C4623A; }
 
-    /* Responsive about grid */
+    /* Mobile adjustments */
     @media (max-width: 768px) {
+      section, header { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+      nav { padding: 1.25rem 1.5rem !important; }
       .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
       .cap-grid { grid-template-columns: 1fr !important; }
+      .hero-bottom-grid { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center; }
+      .hero-bottom-grid > div { text-align: center !important; }
+      .hero-bottom-grid > div:nth-child(2) { display: none !important; }
+      .work-card-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+      .work-card-grid > div:first-child { font-size: 0.8rem !important; }
+      .main-footer { flex-direction: column !important; text-align: center; gap: 1rem !important; padding: 2.5rem 1.5rem !important; }
     }
     @media (min-width: 769px) and (max-width: 1024px) {
       .cap-grid { grid-template-columns: repeat(2,1fr) !important; }
@@ -906,6 +915,10 @@ function AppContent() {
   useFadeObserver();
   const location = useLocation();
   const isWorkRoute = location.pathname.startsWith("/work");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [location.pathname]);
 
   return (
     <>
