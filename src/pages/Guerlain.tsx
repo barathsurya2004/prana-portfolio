@@ -180,7 +180,14 @@ function Hero() {
 }
 
 // ─── PRIMITIVES ──────────────────────────────────────────────────────────────
-function SLabel({ children, light, style }: any) {
+interface PrimitiveProps {
+  children: React.ReactNode;
+  light?: boolean;
+  style?: React.CSSProperties;
+  id?: string;
+  delay?: string;
+}
+function SLabel({ children, light, style }: PrimitiveProps) {
   return (
     <div className="fu" style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: C.amber, display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem", ...style }}>
       {children}
@@ -188,22 +195,29 @@ function SLabel({ children, light, style }: any) {
     </div>
   );
 }
-function SHeading({ id, children, light, delay = "d1" }: any) {
+function SHeading({ id, children, light, delay = "d1" }: PrimitiveProps) {
   return (
     <h2 id={id} className={`fu ${delay}`} style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(2rem,4vw,3.8rem)", fontWeight: 300, lineHeight: 1.05, letterSpacing: "-0.01em", marginBottom: "0.5rem", color: light ? C.cream : C.ink }}>{children}</h2>
   );
 }
-function SBody({ children, light, delay, style }: any) {
+function SBody({ children, light, delay, style }: PrimitiveProps) {
   return (
     <p className={`fu ${delay || ""}`} style={{ fontSize: "0.92rem", lineHeight: 1.85, color: light ? "rgba(242,235,217,0.65)" : C.inkMid, ...style }}>{children}</p>
   );
 }
-function PullQuote({ children, light }: any) {
+function PullQuote({ children, light }: PrimitiveProps) {
   return (
     <blockquote className="fu d3" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.4rem,2.8vw,2.2rem)", fontWeight: 300, fontStyle: "italic", lineHeight: 1.4, borderLeft: `2px solid ${C.amber}`, paddingLeft: "1.5rem", margin: "2.5rem 0", color: light ? C.cream : C.ink }}>{children}</blockquote>
   );
 }
-function Visual({ src, alt, caption, lightCaption, delay }: any) {
+interface VisualProps {
+  src: string;
+  alt: string;
+  caption?: string;
+  lightCaption?: boolean;
+  delay?: string;
+}
+function Visual({ src, alt, caption, lightCaption, delay }: VisualProps) {
   return (
     <div className={`fu ${delay || ""}`} style={{ margin: "2rem 0" }}>
       <div className="visual-img-wrap">
