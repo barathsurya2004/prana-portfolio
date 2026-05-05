@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Link, useNavigate } from "react-router-dom";
 import type {
   WorkItem,
   WorkCardProps,
@@ -23,6 +23,9 @@ import WorkDetail from "./pages/WorkDetail";
 import MiuMiu from "./pages/MiuMiu";
 import LoroPiana from "./pages/LoroPiana";
 import Guerlain from "./pages/Guerlain";
+
+// Module-level flag persisted for the lifetime of the SPA (resets on full page reload)
+let appLoaderShown = false;
 
 // ─── UTILS ────────────────────────────────────────────────────────────────────
 
@@ -362,6 +365,9 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
   const [hovered, setHovered] = useState(false);
   const [lensPos, setLensPos] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
+
+  const to = item.slug ? `/works/${item.slug}` : `/work/${item.index}`;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = cardRef.current?.getBoundingClientRect();
@@ -375,6 +381,18 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onMouseMove={handleMouseMove}
+      onClick={(e) => {
+        // if a link or interactive element was clicked, let it handle the event
+        if ((e.target as HTMLElement).closest('a,button')) return;
+        navigate(to);
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          navigate(to);
+        }
+      }}
+      role="link"
+      tabIndex={0}
       style={{
         position: "relative", overflow: "hidden",
         borderBottom: "1px solid rgba(13,13,13,0.1)",
@@ -511,10 +529,23 @@ function MainLoader({ onLoaded }: { onLoaded: () => void }) {
 }
 
 function HomePage() {
-  const [loaded, setLoaded] = useState(false);
+  const shouldShowLoader = !appLoaderShown;
+  const [loaded, setLoaded] = useState(!shouldShowLoader);
+
+  useEffect(() => {
+    if (!shouldShowLoader) setLoaded(true);
+  }, [shouldShowLoader]);
+
   return (
     <>
-      <MainLoader onLoaded={() => setLoaded(true)} />
+      {shouldShowLoader && (
+        <MainLoader
+          onLoaded={() => {
+            setLoaded(true);
+            appLoaderShown = true;
+          }}
+        />
+      )}
       <Hero visible={loaded} />
       <Marquee />
       <Work />
