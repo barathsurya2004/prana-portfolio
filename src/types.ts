@@ -15,6 +15,7 @@ export const colors = {
 // ─── WORK SECTION ─────────────────────────────────────────────────────────────
 export interface WorkItem {
     index: string;
+    slug?: string;
     tags: string[];
     title: string;
     subtitle: string;

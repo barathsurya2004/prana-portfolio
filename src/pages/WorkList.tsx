@@ -45,7 +45,15 @@ export default function WorkList() {
                         <button
                             key={work.id}
                             type="button"
-                            onClick={() => navigate(`/work/${work.id}`)}
+                            onClick={() => {
+                                if (work.id === "01") {
+                                    navigate("/works/miu-miu");
+                                } else if (work.id === "03") {
+                                    navigate("/works/loro-piana");
+                                } else {
+                                    navigate(`/work/${work.id}`);
+                                }
+                            }}
                             style={{
                                 textAlign: "left",
                                 padding: "1.35rem 1.4rem",

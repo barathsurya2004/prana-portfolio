@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom";
 import type {
   WorkItem,
   WorkCardProps,
@@ -20,8 +20,11 @@ import {
 import CursorWrapper from "./components/CursorWrapper";
 import WorkList from "./pages/WorkList";
 import WorkDetail from "./pages/WorkDetail";
+import MiuMiu from "./pages/MiuMiu";
+import LoroPiana from "./pages/LoroPiana";
 
 // ─── CUSTOM HOOKS ────────────────────────────────────────────────────────────
+// ... (omitting some lines for brevity in thought, but I will provide full strings in actual call)
 function useFadeObserver() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -341,7 +344,7 @@ function SectionHeader({ label, title, count, light = false }: SectionHeaderProp
 // ─── WORK ─────────────────────────────────────────────────────────────────────
 const workItems: WorkItem[] = [
   {
-    index: "01", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Phygital Retail Experience",
+    index: "01", slug: "miu-miu", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Phygital Retail Experience",
     subtitle: "Brand Extension · SCAD Brand Strategy Studio", lensText: "Phygital Retail\nExperience Design",
     desc: "Conceptualised a phygital retail strategy for Miu Miu — merging digital interactivity with tactile in-store theatricality to deepen emotional engagement with Gen-Z consumers.",
     outcome: "Repositioned brand touchpoints across three audience cohorts",
@@ -353,7 +356,7 @@ const workItems: WorkItem[] = [
     outcome: "Extended brand into Indian heritage storytelling framework",
   },
   {
-    index: "03", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Heritage Repositioning",
+    index: "03", slug: "loro-piana", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Heritage Repositioning",
     subtitle: "Luxury Strategy · SCAD Consumer Behaviour Module", lensText: "Craft · Legacy\nAuthenticity",
     desc: "Analysed Loro Piana's ultra-luxury positioning against emerging consumer values, proposing a recalibrated brand narrative that preserved exclusivity while broadening cultural relevance.",
     outcome: "Maintained brand equity while expanding TAM",
@@ -427,8 +430,8 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
         </div>
       </div>
 
-      <a
-        href={`/work/${item.index}`}
+      <Link
+        to={item.slug ? `/works/${item.slug}` : `/work/${item.index}`}
         aria-label={`View ${item.title}`}
         style={{
           width: 48, height: 48, borderRadius: "50%",
@@ -443,7 +446,7 @@ function WorkCard({ item, delay = 0 }: WorkCardProps) {
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke={hovered ? "white" : colors.ink} strokeWidth="1.5">
           <path d="M3 13L13 3M13 3H6M13 3v7" />
         </svg>
-      </a>
+      </Link>
     </article>
   );
 }
@@ -913,6 +916,8 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/work" element={<WorkList />} />
           <Route path="/work/:id" element={<WorkDetail />} />
+          <Route path="/works/miu-miu" element={<MiuMiu />} />
+          <Route path="/works/loro-piana" element={<LoroPiana />} />
         </Routes>
       </main>
       {!isWorkRoute && <Footer />}
