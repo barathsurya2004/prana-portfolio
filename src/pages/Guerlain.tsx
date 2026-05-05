@@ -71,6 +71,7 @@ function LocalStyles() {
         .gr .three-col, .gr .notes-grid { grid-template-columns: 1fr !important; }
         .gr .stat-cols-4 { grid-template-columns: 1fr !important; }
         .gr .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; }
+        .gr .hero-content { justify-content: center !important; padding-top: 3rem !important; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -158,7 +159,7 @@ function Hero() {
       {heroParticles.map((p, i) => (
         <div key={i} aria-hidden="true" style={{ position: "absolute", left: p.left, bottom: p.bottom, width: 3, height: 3, borderRadius: "50%", background: C.amberSoft, opacity: 0, animation: `scentRise ${p.dur} ease-out ${p.delay} infinite`, pointerEvents: "none" }} />
       ))}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.amberSoft }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.4)" }}>Case Study 02 · SCAD Luxury Marketing Studio · 2026</span>
@@ -321,6 +322,74 @@ function Reflection() {
   );
 }
 
+// ─── NEXT PROJECT ──────────────────
+function NextProject() {
+  const [h, setH] = useState(false);
+  return (
+    <Link to="/works/loro-piana" aria-label="Next case study: Loro Piana"
+      className="next-proj-wrap"
+      onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+      style={{
+        display: "flex", justifyContent: "space-between", alignItems: "center",
+        gap: "2rem", textDecoration: "none", padding: "5rem 2.5rem",
+        background: h ? "#1a1a1a" : C.ink,
+        borderTop: "1px solid rgba(242,235,217,0.06)",
+        transition: "background 0.3s",
+      }}>
+      <div>
+        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Next Case Study</div>
+        <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>Loro Piana<br /><em style={{ fontStyle: "italic", color: C.amberSoft }}>Heritage Repositioning</em></div>
+      </div>
+      <div className="np-arrow-inner" style={{
+        width: 56, height: 56, borderRadius: "50%",
+        border: `1px solid ${h ? C.amber : "rgba(242,235,217,0.15)"}`,
+        background: h ? C.amber : "transparent",
+        display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+        transform: h ? "rotate(-45deg)" : "none",
+        transition: "border-color 0.2s, background 0.2s, transform 0.3s",
+      }}>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+          stroke={h ? "white" : "rgba(242,235,217,0.5)"}
+          strokeWidth="1.4" aria-hidden="true" style={{ transition: "stroke 0.2s" }}>
+          <path d="M4 14L14 4M14 4H7M14 4v7" />
+        </svg>
+      </div>
+    </Link>
+  );
+}
+
+// ─── BACK TO TOP ──────────────────
+function BackToTop() {
+  const [show, setShow] = useState(false);
+  const [h, setH] = useState(false);
+  useEffect(() => {
+    const fn = () => setShow(window.scrollY > 400);
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+  return (
+    <button onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); }}
+      aria-label="Back to top"
+      onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
+      style={{
+        position: "fixed", bottom: "2rem", right: "2rem", zIndex: 200,
+        width: 42, height: 42, borderRadius: "50%",
+        background: h ? C.amber : C.ink,
+        border: `1px solid ${h ? C.amber : "rgba(242,235,217,0.15)"}`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        textDecoration: "none",
+        opacity: show ? 1 : 0, pointerEvents: show ? "all" : "none",
+        transition: "opacity 0.3s, background 0.2s, border-color 0.2s",
+        cursor: "none"
+      }}
+    >
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="white" strokeWidth="1.5" aria-hidden="true">
+        <path d="M8 12V4M4 7l4-4 4 4" />
+      </svg>
+    </button>
+  );
+}
+
 // ─── MAIN PAGE ───────────────────────────────────────────────────────────────
 export default function Guerlain() {
   useFadeObserver();
@@ -338,11 +407,13 @@ export default function Guerlain() {
         <Olfactory />
         <Reflection />
       </main>
+      <NextProject />
       <footer style={{ background: C.ink, color: "rgba(242,235,217,0.25)", padding: "1.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px solid rgba(242,235,217,0.05)", fontSize: "0.62rem", letterSpacing: "0.1em" }}>
         <Link to="/" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}>← Selected Works</Link>
         <span>Case Study 02 of 03</span>
         <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}>Contact</a>
       </footer>
+      <BackToTop />
     </div>
   );
 }

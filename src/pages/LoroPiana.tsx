@@ -68,7 +68,7 @@ function LocalStyles() {
         .lp .three-col { grid-template-columns: 1fr !important; } 
         .lp .stat-cols-4 { grid-template-columns: 1fr !important; } 
       }
-      @media (max-width: 768px) { .lp .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } }
+      @media (max-width: 768px) { .lp .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } .lp .hero-content { justify-content: center !important; padding-top: 3rem !important; } }
     `}</style>
   );
 }
@@ -174,7 +174,7 @@ function Hero() {
       </div>
 
       {/* Main content */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.gold }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>

@@ -56,7 +56,7 @@ function LocalStyles() {
       @media (max-width: 900px) { .miu .two-col { grid-template-columns: 1fr !important; gap: 3rem !important; } }
       @media (max-width: 700px) { .miu .three-col { grid-template-columns: 1fr 1fr !important; } .miu .card-grid-inner { grid-template-columns: 1fr !important; } }
       @media (max-width: 700px) { .miu .stat-cols-4 { grid-template-columns: 1fr !important; } }
-      @media (max-width: 768px) { .miu .hero-footer-grid { grid-template-columns: 1fr 1fr !important; } .miu .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } }
+      @media (max-width: 768px) { .miu .hero-footer-grid { grid-template-columns: 1fr 1fr !important; } .miu .proj-title { font-size: clamp(2.8rem,10vw,5rem) !important; } .miu .hero-content { justify-content: center !important; padding-top: 3rem !important; } }
     `}</style>
   );
 }
@@ -175,7 +175,7 @@ function Hero() {
       }} />
 
       {/* Main content */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.terra }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>

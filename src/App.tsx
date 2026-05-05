@@ -219,6 +219,7 @@ function Hero() {
 
       {/* Main content */}
       <div
+        className="hero-content"
         style={{
           display: "flex", flexDirection: "column", justifyContent: "flex-end",
           paddingBottom: "2rem", paddingTop: "7rem",
@@ -890,6 +891,7 @@ const GlobalStyles = () => (
     @media (max-width: 768px) {
       section, header { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
       nav { padding: 1.25rem 1.5rem !important; }
+      .hero-content { justify-content: center !important; padding-top: 3rem !important; }
       .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
       .cap-grid { grid-template-columns: 1fr !important; }
       .hero-bottom-grid { grid-template-columns: 1fr !important; gap: 2rem !important; text-align: center; }
