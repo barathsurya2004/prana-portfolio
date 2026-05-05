@@ -4,24 +4,23 @@ import { colors } from "../types";
 export default function CursorWrapper({ children }: { children: ReactNode }) {
     const dotRef = useRef<HTMLDivElement>(null);
     const ringRef = useRef<HTMLDivElement>(null);
-    const [touchMode, setTouchMode] = useState(() => {
-        if (typeof window === "undefined") return false;
-        return window.matchMedia("(pointer: coarse)").matches || navigator.maxTouchPoints > 0;
-    });
+    const [isVisible, setIsVisible] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
 
     useEffect(() => {
-        if (touchMode || !window.matchMedia("(pointer: fine)").matches) return;
+        const checkPointer = () => {
+            setIsDesktop(window.matchMedia("(pointer: fine)").matches);
+        };
+        
+        checkPointer();
+        window.addEventListener("resize", checkPointer);
 
         const dot = dotRef.current;
         const ring = ringRef.current;
-        let hasMouseMoved = false;
 
         const move = (e: MouseEvent) => {
-            if (!hasMouseMoved) {
-                hasMouseMoved = true;
-                if (dot) dot.style.opacity = "1";
-                if (ring) ring.style.opacity = "1";
-            }
+            if (!isVisible) setIsVisible(true);
+            
             if (dot) {
                 dot.style.left = e.clientX + "px";
                 dot.style.top = e.clientY + "px";
@@ -73,73 +72,62 @@ export default function CursorWrapper({ children }: { children: ReactNode }) {
             }
         };
 
-        const disableForTouch = () => {
-            setTouchMode(true);
-        };
-
-        const disableForTouchPointer = (event: PointerEvent) => {
-            if (event.pointerType === "touch") {
-                setTouchMode(true);
-            }
-        };
-
-        document.addEventListener("mousemove", move);
-        document.addEventListener("mouseover", handleMouseOver);
-        document.addEventListener("mouseout", handleMouseOut);
-        document.addEventListener("touchstart", disableForTouch, { passive: true });
-        document.addEventListener("pointerdown", disableForTouchPointer);
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener("mousemove", move);
+            document.addEventListener("mouseover", handleMouseOver);
+            document.addEventListener("mouseout", handleMouseOut);
+        }
 
         return () => {
+            window.removeEventListener("resize", checkPointer);
             document.removeEventListener("mousemove", move);
             document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseout", handleMouseOut);
-            document.removeEventListener("touchstart", disableForTouch);
-            document.removeEventListener("pointerdown", disableForTouchPointer);
         };
-    }, [touchMode]);
-
-    if (touchMode) {
-        return <>{children}</>;
-    }
+    }, [isVisible]);
 
     return (
         <>
-            <div
-                ref={dotRef}
-                style={{
-                    width: 8,
-                    height: 8,
-                    background: colors.terra,
-                    borderRadius: "50%",
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    pointerEvents: "none",
-                    zIndex: 9999,
-                    opacity: 0,
-                    transform: "translate(-50%,-50%)",
-                    transition: "transform 0.1s ease, opacity 0.15s ease",
-                }}
-                aria-hidden="true"
-            />
-            <div
-                ref={ringRef}
-                style={{
-                    width: 36,
-                    height: 36,
-                    border: `1px solid ${colors.ink}`,
-                    borderRadius: "50%",
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    pointerEvents: "none",
-                    zIndex: 9998,
-                    opacity: 0,
-                    transform: "translate(-50%,-50%)",
-                    transition: "width 0.3s ease, height 0.3s ease, border-color 0.2s ease, opacity 0.15s ease",
-                }}
-                aria-hidden="true"
-            />
+            {isDesktop && (
+                <>
+                    <div
+                        ref={dotRef}
+                        style={{
+                            width: 8,
+                            height: 8,
+                            background: colors.terra,
+                            borderRadius: "50%",
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            pointerEvents: "none",
+                            zIndex: 9999,
+                            transform: "translate(-50%,-50%)",
+                            transition: "transform 0.1s ease, opacity 0.3s ease",
+                            opacity: isVisible ? 1 : 0,
+                        }}
+                        aria-hidden="true"
+                    />
+                    <div
+                        ref={ringRef}
+                        style={{
+                            width: 36,
+                            height: 36,
+                            border: `1px solid ${colors.ink}`,
+                            borderRadius: "50%",
+                            position: "fixed",
+                            top: 0,
+                            left: 0,
+                            pointerEvents: "none",
+                            zIndex: 9998,
+                            transform: "translate(-50%,-50%)",
+                            transition: "width 0.3s ease, height 0.3s ease, border-color 0.2s ease, opacity 0.3s ease",
+                            opacity: isVisible ? 1 : 0,
+                        }}
+                        aria-hidden="true"
+                    />
+                </>
+            )}
             {children}
         </>
     );

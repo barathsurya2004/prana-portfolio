@@ -48,6 +48,8 @@ export default function WorkList() {
                             onClick={() => {
                                 if (work.id === "01") {
                                     navigate("/works/miu-miu");
+                                } else if (work.id === "02") {
+                                    navigate("/works/guerlain");
                                 } else if (work.id === "03") {
                                     navigate("/works/loro-piana");
                                 } else {

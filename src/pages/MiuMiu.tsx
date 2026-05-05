@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SelectedWorksNav from "../components/SelectedWorksNav";
 
 // ─── DESIGN TOKENS ───────────────────────────────────────────────────────────
 const C = {
@@ -132,31 +133,7 @@ function Loader() {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", fn, { passive: true });
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
-  return (
-    <nav id="mainNav" aria-label="Page navigation" style={{
-      position: "fixed", top: 0, width: "100%", zIndex: 100,
-      padding: "1.4rem 2.5rem", display: "flex", alignItems: "center", justifyContent: "space-between",
-      background: scrolled ? "rgba(242,235,217,0.90)" : "transparent",
-      backdropFilter: scrolled ? "blur(14px)" : "none",
-      borderBottom: scrolled ? "1px solid rgba(13,13,13,0.07)" : "none",
-      transition: "background 0.4s,backdrop-filter 0.4s",
-    }}>
-      <Link to="/" style={{ display: "flex", alignItems: "center", gap: "0.6rem", fontSize: "0.68rem", letterSpacing: "0.2em", textTransform: "uppercase", color: C.ink, textDecoration: "none", transition: "color 0.2s" }}
-        onMouseEnter={e => e.currentTarget.style.color = C.terra} onMouseLeave={e => e.currentTarget.style.color = C.ink}>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><path d="M11 7H3M6 4L3 7l3 3" /></svg>
-        Selected Works
-      </Link>
-      <Link to="/" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "1.1rem", fontWeight: 400, letterSpacing: "0.05em", color: C.ink, textDecoration: "none" }}>P·R</Link>
-      <span style={{ fontSize: "0.62rem", letterSpacing: "0.22em", textTransform: "uppercase", color: C.sage }}>01 / 03</span>
-    </nav>
-  );
+  return <SelectedWorksNav accentColor={C.terra} current="01" />;
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────

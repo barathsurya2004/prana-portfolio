@@ -22,8 +22,10 @@ import WorkList from "./pages/WorkList";
 import WorkDetail from "./pages/WorkDetail";
 import MiuMiu from "./pages/MiuMiu";
 import LoroPiana from "./pages/LoroPiana";
+import Guerlain from "./pages/Guerlain";
 
-// ─── CUSTOM HOOKS ────────────────────────────────────────────────────────────
+// ─── UTILS ────────────────────────────────────────────────────────────────────
+
 // ... (omitting some lines for brevity in thought, but I will provide full strings in actual call)
 function useFadeObserver() {
   useEffect(() => {
@@ -351,7 +353,7 @@ const workItems: WorkItem[] = [
     outcome: "Repositioned brand touchpoints across three audience cohorts",
   },
   {
-    index: "02", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain — Fragrance Brand Extension",
+    index: "02", slug: "guerlain", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain — Fragrance Brand Extension",
     subtitle: "Brand Architecture · SCAD Luxury Marketing Studio", lensText: "Heritage Meets\nModernity",
     desc: "Developed a fragrance extension strategy rooted in Guerlain's 190-year heritage, crafting an olfactory narrative that bridges maison tradition with contemporary luxury consumers.",
     outcome: "Extended brand into Indian heritage storytelling framework",
@@ -931,6 +933,7 @@ function AppContent() {
           <Route path="/work/:id" element={<WorkDetail />} />
           <Route path="/works/miu-miu" element={<MiuMiu />} />
           <Route path="/works/loro-piana" element={<LoroPiana />} />
+          <Route path="/works/guerlain" element={<Guerlain />} />
         </Routes>
       </main>
       {!isWorkRoute && <Footer />}
