@@ -222,7 +222,7 @@ function Hero() {
           </span>
         </div>
 
-        <h1 id="heroTitle" className="proj-title" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(2.5rem,7.5vw,7.5rem)", fontWeight: 300, lineHeight: 0.9, letterSpacing: "-0.025em", color: C.cream, ...fade(0.08) }}>
+        <h1 id="heroTitle" className="proj-title" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(2.5rem,7vw,7.5rem)", fontWeight: 300, lineHeight: 0.9, letterSpacing: "-0.025em", color: C.cream, ...fade(0.08) }}>
           Guerlain<br />
           <em style={{ fontStyle: "italic", color: C.amberSoft }}>Shalimar</em><br />
           Campaign
@@ -325,7 +325,7 @@ function Concept() {
 // If hosting on Vimeo, swap the iframe src to:
 //   https://player.vimeo.com/video/YOUR_VIMEO_ID?autoplay=1&title=0&byline=0&portrait=0
 // ─────────────────────────────────────────────────────────────────────────────
-const YOUTUBE_VIDEO_ID = "REPLACE_WITH_VIDEO_ID"; // ← paste your YouTube/Vimeo ID here
+const YOUTUBE_VIDEO_ID: string = "1bvbsx-hpFc"; // ← paste your YouTube/Vimeo ID here
 
 function TheFilm() {
   const [playing, setPlaying] = useState(false);
@@ -344,7 +344,7 @@ function TheFilm() {
   return (
     <section style={{ padding: "0", background: C.ink }} aria-labelledby="filmHead">
       {/* Section header */}
-      <div style={{ padding: "4rem 2.5rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+      <div style={{ padding: "4rem 3rem 3rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
         <div>
           <div className="fu" style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: C.amber, marginBottom: "0.75rem" }}>The Campaign Film</div>
           <h2 id="filmHead" className="fu d1" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.8rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>
@@ -357,7 +357,7 @@ function TheFilm() {
       </div>
 
       {/* Video player */}
-      <div className="fu film-wrap" onClick={handlePlay} style={{ margin: "0 2.5rem 0", aspectRatio: "16/9", position: "relative" }}>
+      <div className="fu film-wrap" onClick={handlePlay} style={{ margin: "0 3rem 0", aspectRatio: "16/9", position: "relative" }}>
         {/* Poster / thumbnail placeholder */}
         {!playing && (
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${C.indigo} 0%, #1a0f1e 50%, ${C.indigo} 100%)`, zIndex: 1 }}>

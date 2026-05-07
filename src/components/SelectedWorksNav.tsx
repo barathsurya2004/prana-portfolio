@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { colors } from "../types";
 
@@ -10,9 +10,38 @@ type SelectedWorksNavProps = {
 
 export default function SelectedWorksNav({ accentColor, current, total = "03" }: SelectedWorksNavProps) {
     const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
+    const lastScrollY = useRef(0);
+    const hiddenRef = useRef(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrolled(window.scrollY > 50);
+        lastScrollY.current = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            const scrollingUp = currentScrollY < lastScrollY.current;
+            const scrollingDown = currentScrollY > lastScrollY.current;
+            const passedThreshold = currentScrollY > 70;
+            const meaningfulDownScroll = currentScrollY - lastScrollY.current > 10;
+
+            setScrolled(currentScrollY > 50);
+
+            let nextHidden = hiddenRef.current;
+
+            if (currentScrollY <= 50) {
+                nextHidden = false;
+            } else if (scrollingUp) {
+                nextHidden = false;
+            } else if (scrollingDown && passedThreshold && meaningfulDownScroll) {
+                nextHidden = true;
+            }
+
+            hiddenRef.current = nextHidden;
+            setHidden(nextHidden);
+            lastScrollY.current = currentScrollY;
+        };
+
+        handleScroll();
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
@@ -35,7 +64,10 @@ export default function SelectedWorksNav({ accentColor, current, total = "03" }:
                 background: scrolled ? "rgba(242,235,217,0.90)" : "transparent",
                 backdropFilter: scrolled ? "blur(14px)" : "none",
                 borderBottom: scrolled ? "1px solid rgba(13,13,13,0.07)" : "none",
-                transition: "background 0.4s, backdrop-filter 0.4s",
+                transform: hidden ? "translateY(-110%)" : "translateY(0)",
+                opacity: hidden ? 0 : 1,
+                pointerEvents: hidden ? "none" : "auto",
+                transition: "background 0.4s, backdrop-filter 0.4s, transform 0.28s ease, opacity 0.2s ease",
             }}
         >
             <Link
