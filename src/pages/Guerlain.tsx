@@ -325,7 +325,7 @@ function Concept() {
 // If hosting on Vimeo, swap the iframe src to:
 //   https://player.vimeo.com/video/YOUR_VIMEO_ID?autoplay=1&title=0&byline=0&portrait=0
 // ─────────────────────────────────────────────────────────────────────────────
-const YOUTUBE_VIDEO_ID: string = "1bvbsx-hpFc"; // ← paste your YouTube/Vimeo ID here
+const YOUTUBE_VIDEO_ID: string = "9UACIxAb--E"; // ← paste your YouTube/Vimeo ID here
 
 function TheFilm() {
   const [playing, setPlaying] = useState(false);
@@ -519,7 +519,7 @@ function ProcessBookCTA() {
       </p>
       <div className="fu d3">
         <a
-          href="/process-books/guerlain-shalimar.pdf"
+          href="https://drive.google.com/file/d/1zcxFhuZDHLhXPQukJ7F3NxmQPTu4rnXE/view?usp=drive_link"
           target="_blank" rel="noopener noreferrer"
           className="pb-cta"
           aria-label="View Guerlain Shalimar process book (PDF)"

@@ -525,7 +525,7 @@ function ProcessBookCTA() {
       </p>
       <div className="fu d3">
         <a
-          href="/process-books/loro-piana-trama-invisible.pdf"
+          href="https://drive.google.com/file/d/1-MKsasU_3eafdu_hwIGcZdpuUtOr-x2P/view?usp=drive_link"
           target="_blank" rel="noopener noreferrer"
           className="pb-cta"
           aria-label="View Loro Piana Trama Invisible process book (PDF)"

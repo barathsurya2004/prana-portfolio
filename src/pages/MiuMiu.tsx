@@ -464,7 +464,7 @@ function ProcessBookCTA() {
       </p>
       <div className="fu d3">
         <a
-          href="/process-books/miu-miu-private-worlds.pdf"
+          href="https://drive.google.com/file/d/1dZ1sOijLNeW7fLjUGWQvC0LsKMyF9dhQ/view?usp=drive_link"
           target="_blank" rel="noopener noreferrer"
           className="pb-cta"
           aria-label="View Miu Miu Private Worlds process book (PDF)"
