@@ -342,22 +342,22 @@ function SectionHeader({ label, title, count, light = false }: SectionHeaderProp
 // ─── WORK ─────────────────────────────────────────────────────────────────────
 const workItems: WorkItem[] = [
   {
-    index: "01", slug: "miu-miu", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Phygital Retail Experience",
-    subtitle: "Brand Extension · SCAD Brand Strategy Studio", lensText: "Phygital Retail\nExperience Design",
-    desc: "Conceptualised a phygital retail strategy for Miu Miu — merging digital interactivity with tactile in-store theatricality to deepen emotional engagement with Gen-Z consumers.",
-    outcome: "Repositioned brand touchpoints across three audience cohorts",
+    index: "01", slug: "miu-miu", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Private Worlds",
+    subtitle: "Brand Extension · SCAD Brand Strategy Studio", lensText: "Private\nWorlds",
+    desc: "A life-sized dollhouse pop-up and companion app that translates Miu Miu's playful, subversive femininity into a fully immersive phygital retail installation.",
+    outcome: "Deepened emotional engagement through immersive retail and app experiences",
   },
   {
-    index: "02", slug: "guerlain", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain — Fragrance Brand Extension",
+    index: "02", slug: "guerlain", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain Shalimar — Where Love Becomes Eternal",
     subtitle: "Brand Architecture · SCAD Luxury Marketing Studio", lensText: "Heritage Meets\nModernity",
-    desc: "Developed a fragrance extension strategy rooted in Guerlain's 190-year heritage, crafting an olfactory narrative that bridges maison tradition with contemporary luxury consumers.",
-    outcome: "Extended brand into Indian heritage storytelling framework",
+    desc: "A digitally-first campaign and sensory storytelling approach that repositions Shalimar for younger luxury consumers, translating its olfactory heritage into cinematic and tactile experiences.",
+    outcome: "Reframed a heritage scent to resonate with Gen Z and younger millennials",
   },
   {
-    index: "03", slug: "loro-piana", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Heritage Repositioning",
+    index: "03", slug: "loro-piana", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Trama Invisible",
     subtitle: "Luxury Strategy · SCAD Consumer Behaviour Module", lensText: "Craft · Legacy\nAuthenticity",
-    desc: "Analysed Loro Piana's ultra-luxury positioning against emerging consumer values, proposing a recalibrated brand narrative that preserved exclusivity while broadening cultural relevance.",
-    outcome: "Maintained brand equity while expanding TAM",
+    desc: "A fragrance brand extension that translates Loro Piana's century of textile mastery into olfactory experiences — six wood-based scents, each evoking a different way of touching cashmere.",
+    outcome: "Expanded brand into fragrance while preserving heritage",
   },
 ];
 
