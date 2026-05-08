@@ -1,22 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Pranahita Reddy — Luxury Brand Strategist & Designer specializing in culturally driven storytelling, brand positioning, and consumer insights across global luxury markets." />
-  <meta name="keywords" content="luxury brand management, brand strategy, textile design, SCAD, brand storytelling, consumer insights, fashion marketing" />
-  <meta property="og:title" content="Pranahita Reddy — Luxury Brand Strategist & Designer" />
-  <meta property="og:description" content="Culturally driven brand storytelling, positioning, and consumer insights across global luxury and emerging markets." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ═══════════════════════════════════════════════════
+       FAVICON & APP ICONS
+       Replace paths once your icon files are exported.
+       Recommended exports: 16, 32, 180, 192, 512 px
+  ═══════════════════════════════════════════════════ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/Icon2.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/Icon2.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/Icon2.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <!-- site.webmanifest should declare name, icons (192 + 512 px), theme_color, background_color -->
+
+  <!-- ═══════════════════════════════════════════════════
+       CANONICAL & INDEXING
+  ═══════════════════════════════════════════════════ -->
+  <!-- Canonical URL — update once you have your final production domain -->
+  <!-- <link rel="canonical" href="https://yourproductionurl.com/" /> -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- ═══════════════════════════════════════════════════
+       PRIMARY SEO META
+  ═══════════════════════════════════════════════════ -->
+  <title>Pranahita Reddy — Luxury Brand Strategist &amp; Designer | SCAD</title>
+  <!-- 50–60 chars, lead with primary keyword, end with brand differentiator -->
+
+  <meta name="description"
+    content="Pranahita Reddy is a Luxury Brand Management graduate student at SCAD specialising in culturally driven brand storytelling, phygital retail strategy, and consumer insights across global luxury markets." />
+  <!-- 150–160 chars. One clear value proposition. Reads naturally as a sentence. -->
+
+  <meta name="keywords"
+    content="luxury brand management, brand strategy, Pranahita Reddy, SCAD luxury, textile design, phygital retail, consumer insights, cultural storytelling, fragrance brand extension, luxury marketing, brand positioning" />
+
+  <meta name="author" content="Pranahita Reddy" />
+  <meta name="creator" content="Pranahita Reddy" />
+  <meta name="publisher" content="Pranahita Reddy" />
+  <meta name="copyright" content="© 2026 Pranahita Reddy" />
+
+  <!-- Preferred colour scheme — keeps browser UI consistent with site palette -->
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F2EBD9" />
+
+  <!-- ═══════════════════════════════════════════════════
+       GEO / LOCAL SEO
+       Helps surface the page for location-relevant searches.
+  ═══════════════════════════════════════════════════ -->
+  <meta name="geo.region" content="US-GA" />
+  <meta name="geo.placename" content="Savannah, Georgia" />
+  <meta name="geo.position" content="32.0835;-81.0998" />
+  <meta name="ICBM" content="32.0835, -81.0998" />
+
+  <!-- ═══════════════════════════════════════════════════
+       OPEN GRAPH  (Facebook, LinkedIn, WhatsApp, Slack)
+       og:image must be an absolute URL — relative paths
+       are ignored by crawlers outside your own server.
+       Recommended: 1200×630 px, < 8 MB, JPG or PNG.
+  ═══════════════════════════════════════════════════ -->
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://placehold.co/1200x630/0D0D0D/F2EBD9?text=Pranahita+Reddy" />
+  <meta property="og:site_name" content="Pranahita Reddy Portfolio" />
+  <meta property="og:locale" content="en_US" />
+  <!-- og:url update once deployed -->
+  <meta property="og:title" content="Pranahita Reddy — Luxury Brand Strategist &amp; Designer" />
+  <meta property="og:description"
+    content="Culturally driven brand storytelling, phygital retail strategy, and consumer insights across global luxury and emerging markets." />
+  <!-- Note: og:image should be 1200×630 px. Generate an OG card or uncomment when you have og-image.jpg in public/ -->
+  <!-- <meta property="og:image" content="https://yourdomain.com/og-image.jpg" /> -->
+  <!-- <meta property="og:image:alt" content="Pranahita Reddy — Luxury Brand Strategist and Designer" /> -->
+
+  <!-- ═══════════════════════════════════════════════════
+       TWITTER / X CARD
+       summary_large_image renders a full-width preview.
+  ═══════════════════════════════════════════════════ -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pranahita Reddy — Luxury Brand Strategist" />
-  <meta name="theme-color" content="#0D0D0D" />
-  <title>Pranahita Reddy — Luxury Brand Strategist & Designer</title>
+  <!-- twitter:site and twitter:creator should link to your verified Twitter account if you have one -->
+  <!-- <meta name="twitter:site" content="@yourtwitterhandle" /> -->
+  <!-- <meta name="twitter:creator" content="@yourtwitterhandle" /> -->
+  <meta name="twitter:title" content="Pranahita Reddy — Luxury Brand Strategist &amp; Designer" />
+  <meta name="twitter:description"
+    content="Culturally driven brand storytelling, phygital retail strategy, and consumer insights across global luxury and emerging markets." />
+  <!-- twitter:image should match og:image. Uncomment when ready -->
+  <!-- <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" /> -->
+
+  <!-- ═══════════════════════════════════════════════════
+       STRUCTURED DATA — JSON-LD
+       Enables rich results in Google Search:
+       knowledge panel, sitelinks, breadcrumbs.
+       Validators: https://search.google.com/test/rich-results
+                   https://validator.schema.org
+  ═══════════════════════════════════════════════════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+
+      {
+        "@type": "Person",
+        "name": "Pranahita Reddy",
+        "url": "https://pranahitareddy.netlify.app/",
+        "jobTitle": "Luxury Brand Strategist & Designer",
+        "description": "Luxury and Brand Management graduate student at SCAD specialising in culturally driven brand storytelling, phygital retail strategy, and consumer insights across global luxury markets.",
+        "email": "pranahitareddy1411@gmail.com",
+        "telephone": "+1-912-226-8844",
+        "knowsAbout": [
+          "Luxury Brand Management",
+          "Brand Strategy",
+          "Consumer Insights",
+          "Cultural Storytelling",
+          "Textile Design",
+          "Phygital Retail",
+          "Fragrance Brand Extension",
+          "Fashion Marketing"
+        ],
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "National Institute of Fashion Technology",
+            "sameAs": "https://www.nift.ac.in/"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Savannah College of Art and Design",
+            "sameAs": "https://www.scad.edu/"
+          }
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/pranahita-reddy-8b8187296/"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Savannah",
+          "addressRegion": "GA",
+          "addressCountry": "US"
+        }
+      },
+
+      {
+        "@type": "WebSite",
+        "@id": "https://pranahitareddy.netlify.app/#website",
+        "url": "https://pranahitareddy.netlify.app/",
+        "name": "Pranahita Reddy — Luxury Brand Strategist & Designer",
+        "description": "Portfolio of luxury brand strategy, cultural storytelling, phygital retail concepts, and fragrance brand extension projects.",
+        "publisher": { "@id": "https://pranahitareddy.netlify.app" },
+        "inLanguage": "en-US"
+      },
+
+      {
+        "@type": "WebPage",
+        "@id": "https://pranahitareddy.netlify.app/#webpage",
+        "url": "https://pranahitareddy.netlify.app/",
+        "name": "Pranahita Reddy — Luxury Brand Strategist & Designer | SCAD",
+        "description": "Pranahita Reddy is a Luxury Brand Management graduate student at SCAD specialising in culturally driven brand storytelling, phygital retail strategy, and consumer insights.",
+        "isPartOf": { "@id": "https://pranahitareddy.netlify.app/#website" },
+        "about": { "@id": "https://pranahitareddy.netlify.app/#person" },
+        "inLanguage": "en-US",
+        "dateModified": "2026-05-08"
+      },
+
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://pranahitareddy.netlify.app/"
+          }
+        ]
+      },
+
+      {
+        "@type": "ProfilePage",
+        "mainEntity": { "@id": "https://pranahitareddy.netlify.app/#person" },
+        "url": "https://pranahitareddy.netlify.app/"
+      }
+
+    ]
+  }
+  </script>
+
+  <!-- ═══════════════════════════════════════════════════
+       PERFORMANCE HINTS
+       preconnect warms up third-party origins before
+       the browser parses your JS bundle.
+       Add your own CDN or font origins here.
+  ═══════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
 </head>
+
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
+
 </html>
