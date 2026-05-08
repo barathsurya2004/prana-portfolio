@@ -23,6 +23,7 @@ import WorkDetail from "./pages/WorkDetail";
 import MiuMiu from "./pages/MiuMiu";
 import LoroPiana from "./pages/LoroPiana";
 import Guerlain from "./pages/Guerlain";
+import aboutPortrait from "./assets/about_me.jpeg";
 
 // Module-level flag persisted for the lifetime of the SPA (resets on full page reload)
 let appLoaderShown = false;
@@ -257,7 +258,7 @@ function Hero({ visible }: { visible: boolean }) {
         <p style={{
           fontFamily: '"Cormorant Garamond",serif',
           fontSize: "clamp(1.1rem, 2vw, 1.5rem)", fontWeight: 300, fontStyle: "italic",
-          color: "rgba(13,13,13,0.7)", marginTop: "2rem", maxWidth: "30ch", lineHeight: 1.5,
+          color: "rgba(13,13,13,0.7)", marginTop: "2rem", maxWidth: "35ch", lineHeight: 1.5,
           opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)",
           transition: `opacity 0.8s ease 0.3s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s`,
         }}>
@@ -562,7 +563,7 @@ function About() {
         {/* Portrait */}
         <div className="fade-up-obs hidden md:block" style={{ position: "relative" }}>
           <img
-            src="https://placehold.co/480x640/1A1A1A/B8965A?text=Pranahita+Reddy"
+            src={aboutPortrait}
             alt="Portrait of Pranahita Reddy"
             style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", filter: "sepia(15%) contrast(1.05)" }}
             loading="lazy"
@@ -597,7 +598,7 @@ function About() {
 
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <OutlineBtn href="mailto:pranahitareddy1411@gmail.com" terra={true}>Start a Conversation</OutlineBtn>
-            <OutlineBtn href="https://linkedin.com/in/pranahita-reddy" light={true}>LinkedIn →</OutlineBtn>
+            <OutlineBtn href="https://www.linkedin.com/in/pranahita-reddy-8b8187296/" light={true}>LinkedIn →</OutlineBtn>
           </div>
         </div>
       </div>
@@ -877,7 +878,7 @@ function Contact() {
           {[
             { label: "LinkedIn", href: "https://www.linkedin.com/in/pranahita-reddy-8b8187296/" },
             { label: "+1 (912) 226-8844", href: "tel:+19122268844" },
-            { label: "Behance", href: "https://behance.net" },
+
           ].map(({ label, href }) => (
             <a
               key={label}
