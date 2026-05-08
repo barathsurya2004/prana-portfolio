@@ -257,11 +257,11 @@ function Hero({ visible }: { visible: boolean }) {
         <p style={{
           fontFamily: '"Cormorant Garamond",serif',
           fontSize: "clamp(1.1rem, 2vw, 1.5rem)", fontWeight: 300, fontStyle: "italic",
-          color: "rgba(13,13,13,0.7)", marginTop: "2rem", maxWidth: "24ch", lineHeight: 1.5,
+          color: "rgba(13,13,13,0.7)", marginTop: "2rem", maxWidth: "30ch", lineHeight: 1.5,
           opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(32px)",
           transition: `opacity 0.8s ease 0.3s, transform 0.8s cubic-bezier(0.16,1,0.3,1) 0.3s`,
         }}>
-          Culturally driven brand storytelling — where Indian craft heritage meets global luxury positioning.
+          Luxury Brand Management focused on the strategic fusion of cultural authenticity and global brand governance.
         </p>
       </div>
 
@@ -577,13 +577,13 @@ function About() {
             "A brand is not what it says — it is what it makes people feel. My work lives in that gap."
           </blockquote>
           {[
-            "I am a Luxury and Brand Management graduate student at SCAD, trained as a textile designer at NIFT Hyderabad. My practice sits at the intersection of cultural intelligence and strategic brand architecture — I build brand identities that are not only visually precise but emotionally resonant.",
-            "Growing up immersed in India's rich craft traditions — hand-embroidery, block-printing, handloom weaving — gave me a foundational understanding of how materials carry meaning. That sensibility now informs how I approach brand strategy: every touchpoint is a texture, every communication is a gesture toward a deeper heritage narrative.",
+            'I am a Luxury and Brand Management graduate student at SCAD, bridging a professional foundation in Textile Design with the strategic rigor of global brand architecture. My practice sits at the intersection of cultural intelligence and digital transformation, building identities that are as visually precise as they are emotionally resonant.',
+            'Years of working closely with artisan techniques and raw materials have given me a foundational understanding of how craftsmanship carries meaning. That sensibility now informs every strategy I touch: I view every touchpoint as a texture and every digital innovation as a gesture toward a deeper heritage narrative.',
           ].map((text, i) => (
             <p key={i} style={{ fontSize: "0.93rem", color: "rgba(242,235,217,0.75)", lineHeight: 1.85, marginBottom: "1.25rem" }}>{text}</p>
           ))}
           <p style={{ fontSize: "0.93rem", color: "rgba(242,235,217,0.75)", lineHeight: 1.85, marginBottom: "1.25rem" }}>
-            I have worked across fashion weeks, luxury design houses, and children's apparel brands — always asking the same question: <em>what story does this want to tell, and who needs to feel it?</em>
+            From architecting "phygital" retail ecosystems for Miu Miu to developing prestige fragrance extensions for Loro Piana, I translate traditional craftsmanship into future-facing consumer experiences. I am a strategist and storyteller dedicated to asking: what story does this brand want to tell, and how can we design the journey so the audience truly feels it?
           </p>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem", marginTop: "2.5rem", paddingTop: "2rem", borderTop: "1px solid rgba(242,235,217,0.1)" }}>
@@ -875,7 +875,7 @@ function Contact() {
 
         <div className="fade-up-obs" style={{ display: "flex", justifyContent: "center", gap: "2.5rem", marginTop: "3rem", flexWrap: "wrap" }}>
           {[
-            { label: "LinkedIn", href: "https://linkedin.com/in/pranahita-reddy" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/pranahita-reddy-8b8187296/" },
             { label: "+1 (912) 226-8844", href: "tel:+19122268844" },
             { label: "Behance", href: "https://behance.net" },
           ].map(({ label, href }) => (
