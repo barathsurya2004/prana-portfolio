@@ -115,10 +115,18 @@ function LocalStyles() {
         .gr .channels-grid { grid-template-columns: 1fr 1fr !important; }
         .gr .stat-row { grid-template-columns: 1fr 1fr !important; }
         .gr .team-grid { grid-template-columns: 1fr 1fr !important; }
+        .gr .film-section { padding: 4rem 2.5rem !important; }
+        .gr .film-header { padding: 0 0 1.5rem !important; flex-direction: column !important; align-items: flex-start !important; gap: 1rem !important; }
+        .gr .film-wrap { margin: 0 !important; }
+        .gr .film-caption { padding: 1.25rem 0 2.5rem !important; }
       }
       @media (max-width: 480px) {
         .gr .channels-grid { grid-template-columns: 1fr !important; }
         .gr .team-grid { grid-template-columns: 1fr !important; }
+        .gr .film-section { padding: 3rem 2rem !important; }
+        .gr .film-header { padding-bottom: 1.25rem !important; }
+        .gr .film-wrap { aspect-ratio: 4 / 3 !important; }
+        .gr .film-caption { padding-bottom: 2rem !important; }
       }
     `}</style>
   );
@@ -214,7 +222,8 @@ function Hero() {
       ))}
 
       {/* Content */}
-      <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      {/* <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}> */}
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: "3rem", paddingTop: "4rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.amberSoft }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.4)" }}>
@@ -342,9 +351,9 @@ function TheFilm() {
   };
 
   return (
-    <section style={{ padding: "0", background: C.ink }} aria-labelledby="filmHead">
+    <section className="film-section" style={{ padding: "6rem 2.5rem", background: C.ink }} aria-labelledby="filmHead">
       {/* Section header */}
-      <div style={{ padding: "4rem 3rem 3rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+      <div className="film-header" style={{ padding: "0 0 2rem", display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
         <div>
           <div className="fu" style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: C.amber, marginBottom: "0.75rem" }}>The Campaign Film</div>
           <h2 id="filmHead" className="fu d1" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.8rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>
@@ -357,7 +366,7 @@ function TheFilm() {
       </div>
 
       {/* Video player */}
-      <div className="fu film-wrap" onClick={handlePlay} style={{ margin: "0 3rem 0", aspectRatio: "16/9", position: "relative" }}>
+      <div className="fu film-wrap" onClick={handlePlay} style={{ margin: 0, aspectRatio: "16/9", position: "relative" }}>
         {/* Poster / thumbnail placeholder */}
         {!playing && (
           <div style={{ position: "absolute", inset: 0, background: `linear-gradient(135deg, ${C.indigo} 0%, #1a0f1e 50%, ${C.indigo} 100%)`, zIndex: 1 }}>
@@ -400,7 +409,7 @@ function TheFilm() {
       </div>
 
       {/* Narrative caption */}
-      <div style={{ padding: "2rem 2.5rem 4rem", display: "flex", justifyContent: "space-between", alignItems: "start", flexWrap: "wrap", gap: "1.5rem" }}>
+      <div className="film-caption" style={{ padding: "2rem 0 0", display: "flex", justifyContent: "space-between", alignItems: "start", flexWrap: "wrap", gap: "1.5rem" }}>
         <p className="fu d2" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "1rem", fontStyle: "italic", color: "rgba(242,235,217,0.4)", maxWidth: "60ch", lineHeight: 1.65 }}>
           Soft golden light. Powder slowly dispersing across a reflective surface. Sandalwood smoke drifting. A letter found between the pages of a book. "Meet me there." — The film translates Shalimar's olfactory world into image, texture, and silence.
         </p>

@@ -195,7 +195,7 @@ function Hero() {
       }} />
 
       {/* Main content */}
-      <div className="hero-content" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: "3rem", paddingTop: "4rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.terra }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>

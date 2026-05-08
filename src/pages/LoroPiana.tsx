@@ -75,6 +75,7 @@ function LocalStyles() {
       @media (max-width: 900px)  { .lp .two-col { grid-template-columns: 1fr !important; gap: 3rem !important; } }
       @media (max-width: 768px)  {
         .lp section, .lp header { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+        .lp .hero-content { justify-content: flex-start !important; padding-top: 3.25rem !important; padding-bottom: 1.25rem !important; }
         .lp .hero-footer-grid   { grid-template-columns: 1fr 1fr !important; }
         .lp .proj-title         { font-size: clamp(2.8rem,10vw,5rem) !important; }
         .lp .frags-grid         { grid-template-columns: 1fr 1fr !important; }
@@ -83,6 +84,7 @@ function LocalStyles() {
         .lp .team-grid          { grid-template-columns: 1fr 1fr !important; }
       }
       @media (max-width: 480px)  {
+        .lp .hero-content { padding-top: 2.5rem !important; }
         .lp .frags-grid { grid-template-columns: 1fr !important; }
         .lp .team-grid  { grid-template-columns: 1fr !important; }
       }
@@ -167,7 +169,7 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div style={{ display: "flex", flexDirection: "column", justifyContent: "flex-end", paddingBottom: "2rem", paddingTop: "7rem", position: "relative", zIndex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", paddingBottom: "3rem", paddingTop: "4rem", position: "relative", zIndex: 1 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.gold }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>

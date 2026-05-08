@@ -924,6 +924,10 @@ const GlobalStyles = () => (
       overflow-x: hidden;
       cursor: none;
     }
+    /* Ensure no element can force horizontal scrolling on mobile */
+    html, #root, main { max-width: 100vw; overflow-x: hidden; }
+    section, header, footer { max-width: 100vw; overflow-x: hidden; }
+    img, svg, video { max-width: 100%; height: auto; display: block; }
     a, button { cursor: none; }
 
     /* Grain overlay */
