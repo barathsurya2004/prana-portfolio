@@ -23,6 +23,7 @@ import WorkDetail from "./pages/WorkDetail";
 import MiuMiu from "./pages/MiuMiu";
 import LoroPiana from "./pages/LoroPiana";
 import Guerlain from "./pages/Guerlain";
+import Rolex from "./pages/Rolex";
 import aboutPortrait from "./assets/about_me.jpeg";
 
 // Module-level flag persisted for the lifetime of the SPA (resets on full page reload)
@@ -343,19 +344,25 @@ function SectionHeader({ label, title, count, light = false }: SectionHeaderProp
 // ─── WORK ─────────────────────────────────────────────────────────────────────
 const workItems: WorkItem[] = [
   {
-    index: "01", slug: "miu-miu", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Private Worlds",
+    index: "01", slug: "rolex", tags: ["Brand Equity", "10-Year Strategy", "Market Forecast"], title: "Rolex — Brand Equity Augmentation",
+    subtitle: "Brand Strategy · SCAD LXMT 730: The Art of Luxury", lensText: "Brand Equity\nAugmentation",
+    desc: "A comprehensive ten-year strategic plan to augment Rolex's symbolic hierarchy — addressing grey market speculation, supply contraction, Digital Product Passports, RCPO, and two tightly controlled brand extensions.",
+    outcome: "Invite-only allocation system cementing Rolex as elite institution",
+  },
+  {
+    index: "02", slug: "miu-miu", tags: ["Retail Strategy", "UX Concept"], title: "Miu Miu — Private Worlds",
     subtitle: "Brand Extension · SCAD Brand Strategy Studio", lensText: "Private\nWorlds",
     desc: "A life-sized dollhouse pop-up and companion app that translates Miu Miu's playful, subversive femininity into a fully immersive phygital retail installation.",
     outcome: "Deepened emotional engagement through immersive retail and app experiences",
   },
   {
-    index: "02", slug: "guerlain", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain Shalimar — Where Love Becomes Eternal",
+    index: "03", slug: "guerlain", tags: ["Fragrance Marketing", "Brand Extension"], title: "Guerlain Shalimar — Where Love Becomes Eternal",
     subtitle: "Brand Architecture · SCAD Luxury Marketing Studio", lensText: "Heritage Meets\nModernity",
     desc: "A digitally-first campaign and sensory storytelling approach that repositions Shalimar for younger luxury consumers, translating its olfactory heritage into cinematic and tactile experiences.",
     outcome: "Reframed a heritage scent to resonate with Gen Z and younger millennials",
   },
   {
-    index: "03", slug: "loro-piana", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Trama Invisible",
+    index: "04", slug: "loro-piana", tags: ["Heritage Repositioning", "Consumer Insights"], title: "Loro Piana — Trama Invisible",
     subtitle: "Luxury Strategy · SCAD Consumer Behaviour Module", lensText: "Craft · Legacy\nAuthenticity",
     desc: "A fragrance brand extension that translates Loro Piana's century of textile mastery into olfactory experiences — six wood-based scents, each evoking a different way of touching cashmere.",
     outcome: "Expanded brand into fragrance while preserving heritage",
@@ -469,7 +476,7 @@ function Work() {
   useFadeObserver();
   return (
     <section id="work" style={{ padding: "6rem 2.5rem", background: colors.cream }} aria-labelledby="workHeading">
-      <SectionHeader label="Selected Work" title="Academic Case Studies" count="03" />
+      <SectionHeader label="Selected Work" title="Academic Case Studies" count="04" />
       <div role="list" style={{ borderTop: "1px solid rgba(13,13,13,0.1)" }}>
         {workItems.map((item, i) => <WorkCard key={item.index} item={item} delay={i * 0.1} />)}
       </div>
@@ -1023,6 +1030,7 @@ function AppContent() {
           <Route path="/works/miu-miu" element={<MiuMiu />} />
           <Route path="/works/loro-piana" element={<LoroPiana />} />
           <Route path="/works/guerlain" element={<Guerlain />} />
+          <Route path="/works/rolex" element={<Rolex />} />
         </Routes>
       </main>
       {!isWorkRoute && <Footer />}

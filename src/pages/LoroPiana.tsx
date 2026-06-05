@@ -546,7 +546,7 @@ function ProcessBookCTA() {
 function NextProject() {
   const [h, setH] = useState(false);
   return (
-    <Link to="/#work" aria-label="Back to Selected Works"
+    <Link to="/works/rolex" aria-label="Next case study: Rolex Brand Equity Augmentation"
       className="next-proj-wrap"
       onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{
@@ -557,10 +557,10 @@ function NextProject() {
         transition: "background 0.3s",
       }}>
       <div>
-        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Back to</div>
+        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Next Case Study</div>
         <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>
-          Selected Works<br />
-          <em style={{ fontStyle: "italic", color: C.gold }}>Pranahita Reddy</em>
+          Rolex<br />
+          <em style={{ fontStyle: "italic", color: C.gold }}>Brand Equity Augmentation</em>
         </div>
       </div>
       <div className="np-arrow-inner" style={{
@@ -595,7 +595,7 @@ function Footer() {
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>
         ← Selected Works
       </Link>
-      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 03 of 03</span>
+      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 03 of 04</span>
       <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
         onMouseEnter={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = C.gold}
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>

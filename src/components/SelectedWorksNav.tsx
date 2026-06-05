@@ -8,7 +8,7 @@ type SelectedWorksNavProps = {
     total?: string;
 };
 
-export default function SelectedWorksNav({ accentColor, current, total = "03" }: SelectedWorksNavProps) {
+export default function SelectedWorksNav({ accentColor, current, total = "04" }: SelectedWorksNavProps) {
     const [scrolled, setScrolled] = useState(false);
     const [hidden, setHidden] = useState(false);
     const lastScrollY = useRef(0);

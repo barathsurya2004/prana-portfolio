@@ -23,6 +23,13 @@ const works = [
         summary:
             "Reframed ultra-luxury positioning against emerging consumer values while preserving exclusivity.",
     },
+    {
+        id: "04",
+        title: "Rolex — Brand Equity Augmentation",
+        subtitle: "Brand Strategy · SCAD LXMT 730: The Art of Luxury",
+        summary:
+            "A ten-year strategic plan addressing grey market speculation, supply contraction, RCPO, and two brand extensions.",
+    },
 ];
 
 export default function WorkList() {
@@ -52,6 +59,8 @@ export default function WorkList() {
                                     navigate("/works/guerlain");
                                 } else if (work.id === "03") {
                                     navigate("/works/loro-piana");
+                                } else if (work.id === "04") {
+                                    navigate("/works/rolex");
                                 } else {
                                     navigate(`/work/${work.id}`);
                                 }
