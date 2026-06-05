@@ -140,7 +140,7 @@ function Loader() {
         color: "rgba(242,235,217,0.35)", marginTop: "1rem",
         position: "relative", zIndex: 1,
         animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both",
-      }}>Case Study 01 · Pranahita Reddy</p>
+      }}>Case Study 02 · Pranahita Reddy</p>
       <div style={{
         width: "clamp(100px,20vw,200px)", height: 1,
         background: "rgba(242,235,217,0.1)", marginTop: "2rem",
@@ -159,7 +159,7 @@ function Loader() {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav() {
-  return <SelectedWorksNav accentColor={C.terra} current="01" />;
+  return <SelectedWorksNav accentColor={C.terra} current="02" />;
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
@@ -199,7 +199,7 @@ function Hero() {
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.terra }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>
-            Case Study 01 · LXMT 740 · SCAD · 2026
+            Case Study 02 · LXMT 740 · SCAD · 2026
           </span>
         </div>
 
@@ -529,7 +529,7 @@ function Footer() {
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>
         ← Selected Works
       </Link>
-      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 01 of 03</span>
+      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 02 of 04</span>
       <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
         onMouseEnter={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = C.terra}
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>

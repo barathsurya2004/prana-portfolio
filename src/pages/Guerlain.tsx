@@ -175,7 +175,7 @@ function Loader() {
       ))}
       <p style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,5vw,3.5rem)", fontWeight: 300, color: C.cream, letterSpacing: "0.12em", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) both" }} aria-hidden="true">Guerlain</p>
       <p style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "clamp(1rem,2.5vw,1.6rem)", color: C.amberSoft, letterSpacing: "0.06em", position: "relative", zIndex: 1, marginTop: "0.2rem", animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both" }} aria-hidden="true">Shalimar</p>
-      <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginTop: "1.25rem", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}>Case Study 02 · Pranahita Reddy</p>
+      <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginTop: "1.25rem", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.2s both" }}>Case Study 03 · Pranahita Reddy</p>
       <div style={{ width: "clamp(100px,20vw,200px)", height: 1, background: "rgba(242,235,217,0.08)", marginTop: "2.25rem", position: "relative", zIndex: 1, overflow: "hidden" }} aria-hidden="true">
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(90deg, ${C.amber}, ${C.amberSoft}, ${C.gold})`, transform: "scaleX(0)", transformOrigin: "left", animation: "lbar 1.8s cubic-bezier(0.4,0,0.2,1) 0.2s forwards" }} />
       </div>
@@ -185,7 +185,7 @@ function Loader() {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav() {
-  return <SelectedWorksNav accentColor={C.amber} current="02" />;
+  return <SelectedWorksNav accentColor={C.amber} current="03" />;
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
@@ -227,7 +227,7 @@ function Hero() {
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.amberSoft }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.4)" }}>
-            Case Study 02 · LXMT 742 · SCAD · 2026
+            Case Study 03 · LXMT 742 · SCAD · 2026
           </span>
         </div>
 
@@ -596,7 +596,7 @@ function Footer() {
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>
         ← Selected Works
       </Link>
-      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 02 of 03</span>
+      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 03 of 04</span>
       <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
         onMouseEnter={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = C.amber}
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>

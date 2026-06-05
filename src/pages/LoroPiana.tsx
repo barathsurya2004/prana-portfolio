@@ -127,7 +127,7 @@ function Loader() {
       <div aria-hidden="true" style={{ position: "absolute", width: "clamp(110px,20vw,220px)", height: "clamp(110px,20vw,220px)", borderRadius: "50%", border: "1px solid rgba(184,150,90,0.09)", animation: "lspinR 12s linear infinite" }} />
       <p style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,5vw,3.5rem)", fontWeight: 300, color: C.cream, letterSpacing: "0.08em", textAlign: "center", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) both" }} aria-hidden="true">Loro Piana</p>
       <p style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "clamp(0.9rem,2vw,1.2rem)", color: `rgba(184,150,90,0.65)`, letterSpacing: "0.06em", position: "relative", zIndex: 1, marginTop: "0.2rem", animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.08s both" }} aria-hidden="true">Trama Invisible</p>
-      <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.35)", marginTop: "1rem", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}>Case Study 03 · Pranahita Reddy</p>
+      <p style={{ fontSize: "0.58rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.35)", marginTop: "1rem", position: "relative", zIndex: 1, animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both" }}>Case Study 04 · Pranahita Reddy</p>
       <div style={{ width: "clamp(100px,20vw,200px)", height: 1, background: "rgba(242,235,217,0.1)", marginTop: "2rem", position: "relative", zIndex: 1, overflow: "hidden" }} aria-hidden="true">
         <div style={{ position: "absolute", inset: 0, background: `linear-gradient(90deg, ${C.gold}, ${C.terra})`, transform: "scaleX(0)", transformOrigin: "left", animation: "lbar 1.6s cubic-bezier(0.4,0,0.2,1) 0.2s forwards" }} />
       </div>
@@ -137,7 +137,7 @@ function Loader() {
 
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 function Nav() {
-  return <SelectedWorksNav accentColor={C.gold} current="03" />;
+  return <SelectedWorksNav accentColor={C.gold} current="04" />;
 }
 
 // ─── HERO ─────────────────────────────────────────────────────────────────────
@@ -173,7 +173,7 @@ function Hero() {
         <div style={{ display: "flex", alignItems: "center", gap: "1rem", marginBottom: "1.5rem", ...fade(0) }}>
           <div style={{ width: 40, height: 1, background: C.gold }} aria-hidden="true" />
           <span style={{ fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase", color: "rgba(242,235,217,0.45)" }}>
-            Case Study 03 · LXMT 501 · SCAD · 2025
+            Case Study 04 · LXMT 501 · SCAD · 2025
           </span>
         </div>
 
@@ -546,7 +546,7 @@ function ProcessBookCTA() {
 function NextProject() {
   const [h, setH] = useState(false);
   return (
-    <Link to="/works/rolex" aria-label="Next case study: Rolex Brand Equity Augmentation"
+    <Link to="/#work" aria-label="Back to Selected Works"
       className="next-proj-wrap"
       onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{
@@ -557,10 +557,10 @@ function NextProject() {
         transition: "background 0.3s",
       }}>
       <div>
-        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Next Case Study</div>
+        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>All Case Studies</div>
         <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>
-          Rolex<br />
-          <em style={{ fontStyle: "italic", color: C.gold }}>Brand Equity Augmentation</em>
+          Back to<br />
+          <em style={{ fontStyle: "italic", color: C.gold }}>Selected Works</em>
         </div>
       </div>
       <div className="np-arrow-inner" style={{
@@ -568,13 +568,13 @@ function NextProject() {
         border: `1px solid ${h ? C.gold : "rgba(242,235,217,0.15)"}`,
         background: h ? C.gold : "transparent",
         display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
-        transform: h ? "rotate(135deg)" : "none",
+        transform: h ? "rotate(-45deg)" : "none",
         transition: "border-color 0.2s, background 0.2s, transform 0.3s",
       }}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
           stroke={h ? "white" : "rgba(242,235,217,0.5)"}
           strokeWidth="1.4" aria-hidden="true" style={{ transition: "stroke 0.2s" }}>
-          <path d="M14 4L4 14M4 14H11M4 14V7" />
+          <path d="M4 14L14 4M14 4H7M14 4v7" />
         </svg>
       </div>
     </Link>
@@ -595,7 +595,7 @@ function Footer() {
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>
         ← Selected Works
       </Link>
-      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 03 of 04</span>
+      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 04 of 04</span>
       <a href="mailto:pranahitareddy1411@gmail.com" style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
         onMouseEnter={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = C.gold}
         onMouseLeave={(e: React.MouseEvent<HTMLElement>) => e.currentTarget.style.color = "rgba(242,235,217,0.4)"}>

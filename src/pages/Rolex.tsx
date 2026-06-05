@@ -111,8 +111,12 @@ function LocalStyles() {
         .rx .framework-grid   { grid-template-columns: 1fr 1fr !important; }
       }
       @media (max-width: 480px) {
-        .rx .diag-grid      { grid-template-columns: 1fr !important; }
-        .rx .framework-grid { grid-template-columns: 1fr !important; }
+        .rx .diag-grid        { grid-template-columns: 1fr !important; }
+        .rx .framework-grid   { grid-template-columns: 1fr !important; }
+        .rx .team-colophon    { grid-template-columns: 1fr 1fr !important; }
+      }
+      @media (max-width: 900px) {
+        .rx .team-colophon { grid-template-columns: repeat(3,1fr) !important; }
       }
     `}</style>
   );
@@ -200,7 +204,7 @@ function Loader() {
         color: "rgba(242,235,217,0.3)", marginTop: "1rem",
         position: "relative", zIndex: 1,
         animation: "lup 0.9s cubic-bezier(0.16,1,0.3,1) 0.15s both",
-      }}>Case Study 04 · Pranahita Reddy</p>
+      }}>Case Study 01 · Pranahita Reddy</p>
 
       <div style={{
         width: "clamp(100px,20vw,200px)", height: 1,
@@ -220,7 +224,7 @@ function Loader() {
 
 // ─── NAV ─────────────────────────────────────────────────────────────────────
 function Nav() {
-  return <SelectedWorksNav accentColor={C.rxGold} current="04" />;
+  return <SelectedWorksNav accentColor={C.rxGold} current="01" />;
 }
 
 // ─── HERO ────────────────────────────────────────────────────────────────────
@@ -298,7 +302,7 @@ function Hero() {
             fontSize: "0.62rem", letterSpacing: "0.28em", textTransform: "uppercase",
             color: "rgba(242,235,217,0.45)",
           }}>
-            Case Study 04 · LXMT 730: The Art of Luxury · SCAD · 2026
+            Case Study 01 · LXMT 730: The Art of Luxury · SCAD · 2026
           </span>
         </div>
 
@@ -669,44 +673,39 @@ const team = [
 
 function Team() {
   return (
-    <section style={{ padding: "4rem 2.5rem", background: C.cream }} aria-labelledby="teamHead">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", borderBottom: "1px solid rgba(13,13,13,0.1)", paddingBottom: "1.25rem", marginBottom: "2rem" }}>
-        <div>
-          <div className="fu" style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: C.sage, marginBottom: "0.4rem" }}>Collaborators</div>
-          <h2 id="teamHead" className="fu d1" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.4rem,2.5vw,2rem)", fontWeight: 300, color: C.ink }}>The team.</h2>
+    <section style={{ padding: "2.5rem 2.5rem", background: C.cream }} aria-labelledby="teamHead">
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid rgba(13,13,13,0.1)", paddingBottom: "0.9rem", marginBottom: "1.25rem" }}>
+        <div style={{ display: "flex", alignItems: "baseline", gap: "1rem" }}>
+          <div className="fu" style={{ fontSize: "0.6rem", letterSpacing: "0.28em", textTransform: "uppercase", color: C.sage }}>Collaborators</div>
+          <h2 id="teamHead" className="fu d1" style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.1rem,2vw,1.5rem)", fontWeight: 300, color: C.ink }}>The team.</h2>
         </div>
         <div style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.78rem", color: C.sage }}>LXMT 730 · Prof. Alessandro Cannata</div>
       </div>
 
-      {/* Horizontal row list — different from other pages' card grids */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "rgba(13,13,13,0.07)" }}>
+      <div className="team-colophon" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 1, background: "rgba(13,13,13,0.07)" }}>
         {team.map((m) => (
-          <TeamRow key={m.name} m={m} />
+          <TeamCard key={m.name} m={m} />
         ))}
       </div>
     </section>
   );
 }
 
-function TeamRow({ m }: { m: typeof team[0] }) {
+function TeamCard({ m }: { m: typeof team[0] }) {
   const [h, setH] = useState(false);
   return (
     <div
       className={`fu team-row${m.featured ? " featured" : ""}`}
       onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{
-        display: "grid", gridTemplateColumns: "1fr auto",
-        alignItems: "center", padding: "1.1rem 1.5rem",
+        padding: "1.25rem 1.25rem",
         background: m.featured ? (h ? "#1f1f1f" : C.ink) : (h ? C.creamDark : C.mist),
         transition: "background 0.22s",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
-        {/* Gold dot for featured, subtle dot for rest */}
-        <div style={{ width: 6, height: 6, borderRadius: "50%", flexShrink: 0, background: m.featured ? C.rxGold : "rgba(13,13,13,0.15)" }} aria-hidden="true" />
-        <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "1.05rem", fontWeight: 400, color: m.featured ? C.cream : C.ink }}>{m.name}</div>
-      </div>
-      <div style={{ fontSize: "0.65rem", color: m.featured ? C.rxGold : C.sage }}>{m.role}</div>
+      <div style={{ width: 5, height: 5, borderRadius: "50%", background: m.featured ? C.rxGold : "rgba(13,13,13,0.15)", marginBottom: "0.6rem" }} aria-hidden="true" />
+      <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "0.95rem", fontWeight: 400, color: m.featured ? C.cream : C.ink, lineHeight: 1.2, marginBottom: "0.2rem" }}>{m.name}</div>
+      <div style={{ fontSize: "0.6rem", letterSpacing: "0.1em", color: m.featured ? C.rxGold : C.sage }}>{m.role}</div>
     </div>
   );
 }
@@ -747,7 +746,7 @@ function NextProject() {
   return (
     <Link
       to="/works/miu-miu"
-      aria-label="Back to first case study: Miu Miu Private Worlds"
+      aria-label="Next case study: Miu Miu Private Worlds"
       className="next-proj-wrap"
       onMouseEnter={() => setH(true)} onMouseLeave={() => setH(false)}
       style={{
@@ -759,7 +758,7 @@ function NextProject() {
       }}
     >
       <div>
-        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Back to First</div>
+        <div style={{ fontSize: "0.6rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(242,235,217,0.3)", marginBottom: "0.5rem" }}>Next Case Study</div>
         <div style={{ fontFamily: '"Cormorant Garamond",serif', fontSize: "clamp(1.6rem,3.5vw,3rem)", fontWeight: 300, color: C.cream, lineHeight: 1.05 }}>
           Miu Miu<br />
           <em style={{ fontStyle: "italic", color: C.terra }}>Private Worlds</em>
@@ -809,7 +808,7 @@ function Footer() {
       >
         ← Selected Works
       </Link>
-      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 04 of 04</span>
+      <span style={{ fontFamily: '"Cormorant Garamond",serif', fontStyle: "italic", fontSize: "0.8rem", color: "rgba(242,235,217,0.15)" }}>Case Study 01 of 04</span>
       <a
         href="mailto:pranahitareddy1411@gmail.com"
         style={{ color: "rgba(242,235,217,0.4)", textDecoration: "none" }}
